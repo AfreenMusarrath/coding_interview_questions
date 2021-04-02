@@ -1,0 +1,64 @@
+/* ARRAY LEFT ROTATION WITH O(n)*/
+import java.util.*;
+
+class Left_rotation{
+
+    
+public static List<Integer> rotateLeft(int d, List<Integer> arr) {
+    // Write your code here
+    List<Integer> l=new ArrayList<>();
+    int n=arr.size();
+    for( int i=0;i<d;i++) {
+        l.add(i,arr.get(i));
+    }
+    for(int i=d;i<n;i++)
+        arr.set(i-d,arr.get(i));
+    
+    for(int j=0;j<d;j++){
+        arr.set(j+n-d,l.get(j));
+    }
+    return arr;
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int d=sc.nextInt();
+        List<Integer> arr=new ArrayList<Integer>();
+        for(int i=0;i<n;i++){
+            arr.add(i,sc.nextInt());
+        }
+        System.out.println(rotateLeft(d, arr));
+
+}
+}
+
+
+/* ARRAY LEFT ROTATION WITH % OPERATOR */ 
+
+import java.util.*;
+public class Left_rotation2 {
+    public static List<Integer> rotateLeft(int d, List<Integer> arr) {
+        // Write your code here
+        int n=arr.size();
+        int mod= d%n;
+        List<Integer> a=new ArrayList<Integer>();
+        for(int i=0;i<n;i++)
+        {
+            a.add(i,arr.get((i+mod)%n));
+        }
+        return a;
+        }
+        public static void main(String[] args) {
+            Scanner sc=new Scanner(System.in);
+            int n=sc.nextInt();
+            int d=sc.nextInt();
+            List<Integer> arr=new ArrayList<Integer>();
+            for(int i=0;i<n;i++){
+                arr.add(i,sc.nextInt());
+            }
+            System.out.println(rotateLeft(d, arr));
+    
+    }
+    
+
+}
